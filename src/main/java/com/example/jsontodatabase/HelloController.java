@@ -6,19 +6,16 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 
 public class HelloController {
@@ -37,18 +34,6 @@ public class HelloController {
         fileChooser.setInitialDirectory(new File("C:\\Users\\Nikita\\IdeaProjects\\JsonToDatabase\\target"));
         File fileText = fileChooser.showOpenDialog(stage);
         FileReader fr = new FileReader( fileText );
-//        Scanner scan = new Scanner(fr);
-//        String parseText = "";
-//        int i = 1;
-//
-//
-
-//        while (scan.hasNextLine()) {
-//            System.out.println(i + " : " + scan.nextLine());
-//            parseText += "" + (i + " : " + scan.nextLine());
-//            i++;
-//        }
-//        JSONObject fileJson = (JSONObject) JSONValue.parseWithException(parseText);
 
         JSONParser parser = new JSONParser();
         JSONArray parseFile = (JSONArray) parser.parse(fr);
@@ -74,39 +59,8 @@ public class HelloController {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(SQL);
 
-
-
-
-
         }
 
-//        String name = (String) parseFile.get("name");
-//        System.out.println(name);
         fr.close();
-//        System.out.println(fr);
-//        JSONObject obj = new JSONObject();
-//        obj.put("name", "Pankaj Kumar");
-//        obj.put("age", new Integer(32));
-//
-//        JSONArray cities = new JSONArray();
-//        cities.add("New York");
-//        cities.add("Bangalore");
-//        cities.add("San Francisco");
-//
-//        obj.put("cities", cities);
-//
-//        try {
-//
-//            FileWriter file = new FileWriter("data.json");
-//            file.write(obj.toJSONString());
-//            file.flush();
-//            file.close();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.print(obj.toJSONString());
-
     }
 }
